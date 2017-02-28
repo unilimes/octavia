@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="bundle/bundle.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <title>Octavia</title>
+    <style>
+        @font-face {
+            font-family: Tartlers;
+            src: url('assets/fonts/fonts/tartlers_end/Tartlers End.ttf');
+        }
+
+        @font-face {
+            font-family: RawengulkRegular;
+            src: url('assets/fonts/fonts/rawengulk/RawengulkRegular.otf');
+        }
+        @font-face {
+            font-family: RawengulkBold;
+            src: url('assets/fonts/fonts/rawengulk/RawengulkBold.otf');
+        }
+        @font-face {
+            font-family: RawengulkUltralight;
+            src: url('assets/fonts/fonts/rawengulk/RawengulkUltralight.otf');
+        }
+        @font-face {
+            font-family: Menlo-Regular;
+            src: url('assets/fonts/Menlo-Regular.ttf');
+        }
+
+        body {
+            background: #000;
+            font-family: RawengulkRegular;
+        }
+        #textBox{
+            font-family: Tartlers!important;
+        }
+
+        .info{
+            top: 50%;
+            position: absolute;
+            color: white;
+            transform: translateY(-50%);
+            padding: 0 10%;
+            font-size: 16px;
+            margin: 0;
+        }
+        .info>.col-sm-3>p{
+            font-family: RawengulkUltralight;
+            text-align: left;
+        }
+        .info>.col-sm-3>.optional{
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.53);
+        }
+        .info>.col-sm-3>.value-info, .info>.col-sm-3>.optional{
+            display: block;
+        }
+        .home-section {
+
+            background-image: url(assets/img/home.jpg)
+        }
+
+        .help-section {
+            background-image: url(assets/img/help.jpg)
+        }
+
+        .help-section, .home-section {
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center;
+        }
+
+        .footer-custom {
+            position: absolute;
+            z-index: 99;
+            width: 100%;
+            bottom: 0;
+            padding: 15px;
+            left: 0;
+        }
+
+        .right-menu {
+            position: absolute;
+            z-index: 100;
+            bottom: 10px;
+            right: 0;
+            padding: 15px;
+        }
+
+        .right-menu > img,.right-menu>a>img {
+            width: 30px;
+            cursor: pointer;
+            padding-right: 10px;
+        }
+
+        .st-3 {
+            width: 33%;
+            float: left;
+        }
+
+        .footer-custom > .left-menu > .list > li {
+            display: inline-block;
+            font-weight: 600;
+            font-size: 16px;
+            color: white;
+            margin: 0 10px;
+        }
+        .footer-custom > .left-menu > .list > li>a:hover,
+        .footer-custom > .left-menu > .list > li>a:active,
+        .footer-custom > .left-menu > .list > li>a:focus {
+            font-family: Menlo-Regular;
+            color: #ffafb8;
+            text-decoration: none;
+        }
+        .HOME-CROME{
+            position: absolute;
+            bottom: 20px;
+            font-size: 21px;
+            right: 150px;
+            color: white;
+        }
+        .footer-custom > .left-menu > .list > li>a,.HOME-CROME{
+            font-family: Menlo-Regular;
+        }
+
+        .footer-custom > .center-menu {
+            text-align: center;
+        }
+
+        .footer-custom > .center-menu > a {
+
+            font-size: 18px;
+            font-weight: 600;
+
+        }
+
+        a {
+            text-decoration: blink;
+            color: white;
+        }
+
+        ui-view, section, .full-view {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99;
+        }
+
+        .rome-list {
+            color: white;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25%;
+        }
+
+        .rome-list > li {
+            margin: 50px 0;
+            font-size: 26px;
+            font-family: RawengulkRegular;
+
+        }
+
+
+    </style>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+    <script src="app.js"></script>
+
+</head>
+
+<body ng-app="app">
+
+<ui-view></ui-view>
+
+
+<footer class="footer-custom">
+    <div class="left-menu st-3">
+        <ul class="list">
+            <li><a href="#" ui-sref="home"> Octavia</a></li>
+            <li><a href="#" ui-sref="info">Info</a></li>
+            <li><a href="#" ui-sref="help">? Help</a></li>
+        </ul>
+    </div>
+    <div class="center-menu  st-3"><a href="http://surogaat.com/" target="_blank"><img style="width: 150px;" src="assets/img/logo surogaat.png"></a></div>
+</footer>
+<div class="right-menu">
+    <a href="https://www.facebook.com/" target="_blank"><img class="share" src="assets/img/share.png"></a>
+    <img class="full-screen" src="assets/img/fullscreen-11-256.png">
+
+</div>
+
+<script>
+    document.querySelector('.right-menu>.full-screen').addEventListener('click', function () {
+        if (!this.iter)this.iter = 1;
+        if (this.iter++ % 2 == 0) {
+            cancelFullscreen();
+        } else {
+            launchFullScreen(document.body);
+        }
+
+    })
+
+    //Запустить отображение в полноэкранном режиме
+    function launchFullScreen(element) {
+        if (element.requestFullScreen) {
+            element.requestFullScreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+            element.webkitRequestFullScreen();
+        }
+    }
+
+    // Выход из полноэкранного режима
+    function cancelFullscreen() {
+        if (document.cancelFullScreen) {
+            document.cancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        }
+    }
+
+    var onfullscreenchange = function () {
+        var fullscreenElement =
+                document.fullscreenElement ||
+                document.mozFullscreenElement ||
+                document.webkitFullscreenElement;
+        var fullscreenEnabled =
+                document.fullscreenEnabled ||
+                document.mozFullscreenEnabled ||
+                document.webkitFullscreenEnabled;
+        return fullscreenEnabled;
+    }
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Octavia</title>
+    <script src="vendor/jquery/jquery-1.10.2.min.js"></script>
+    <script src="vendor/underscore/underscore-min.js"></script>
+    <!---->
+    <script src="../balls/three.js"></script>
+    <script src="vendor/threejs/js/Detector.js"></script>
+    <script src="vendor/threejs/js/Stats.js"></script>
+    <script src="vendor/threejs/js/OrbitControls.js"></script>
+    <script src="vendor/threejs/js/TrackballControls.js"></script>
+    <script src="vendor/threejs/js/three.objmtl.js"></script>
+    <script src="vendor/threejs/js/three.mtl.js"></script>
+    <script src="vendor/howler/howler.js"></script>
+    <script src="js/Tween.js"></script>
+    <script src="js/extra.js"></script>
+
+    <!-- shaders -->
+    <script src="js/shaders/FresnelShader.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .eff-container {
+            /*display: none;*/
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: -9999;
+            text-align: center;
+        }
+
+        .eff-container > iframe {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .fadeIn {
+            /*width: 100%;*/
+            /*height:100%;*/
+            opacity: 1;
+            transition: opacity 1.5s linear;
+        }
+
+        .fadeOut {
+            /*width: 1%;*/
+            /*height:1%;*/
+            opacity: 0;
+            transition: opacity 1.5s linear;
+        }
+
+        .dark-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99;
+            opacity: 1;
+            background: #000000;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="dark-screen"></div>
+<div class=" eff-container" id="effects">
+    <iframe src="../bumpy/" frameborder="0"></iframe>
+</div>
+<div id="THREEJS">
+</div>
+
+<!--<input type="file" name="load Image" multiple id="filesImage" style="    position: absolute;z-index: 100;top: 0;">
+<script>
+    var file = filesImage;
+    file.addEventListener("change", function (e) {
+        var listFile = e.target.files,
+                _length = listFile.length;
+        var canvas = document.createElement('canvas'),
+                cntx;
+        canvas.width = 0;
+
+
+                var iter = 0;
+        (function readFiles(l) {
+            console.log (l[iter]   );
+            if (!l[iter]) {
+//                var a = document.createElement('a')
+//                a.href = canvas.toDataURL();
+//                document.body.appendChild(a);
+//                a.click();
+
+                document.body.appendChild(canvas);
+                return;
+            }
+
+            var _f = l[iter++],
+                    reader = new FileReader();
+
+            reader.onload = function (ev) {
+                var imagewidth =25088;//3584
+                var image = new Image();
+                if (!canvas.width) {
+                    canvas.width = _length * imagewidth;
+                    canvas.height = 792;
+                    cntx = canvas.getContext('2d');
+                }
+
+
+                image.onload = function () {
+                    cntx.drawImage(image, (iter-1)*imagewidth , 0);
+                    readFiles(l);
+                }
+                image.src = ev.target.result;
+            }
+            reader.readAsDataURL(_f);
+        })(listFile)
+    })
+</script>-->
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bundle/bundle.css">
+
+    <title>Octavia</title>
+
+
+    <script src="assets/js/pace.min.js"></script>
+
+
+</head>
+
+<body  >
+
+<div id="play-r">
+    <img class="center" src="assets/img/play.png">
+</div>
+<div id="textLanding">
+    <div class="afterload-wrap">
+        <img src="assets/img/ICONS2.png">
+        <div class="icons-text">
+            <div>
+                <span>MOVE THE MOUSE AROUND TO HEAR</span>
+            </div>
+            <div>
+                <span>LIKE AN EYE BLINK, MOVE THE MOUSE UP AND DOWN</span>
+            </div>
+            <div>
+                <span class="middle-icon">TURN AUDIO ON !</span>
+            </div>
+            <div>
+                <span>CLICK ON THE FILM</span>
+                <span>BUT DOUBLE CLICK ON THE SPHERE !</span>
+            </div>
+            <div>
+                <span>DRAG TO ROTATE</span>
+                <span>THE SPHERE</span>
+            </div>
+        </div>
+        <span id="start-btn">BEGIN</span>
+    </div>
+
+</div>
+
+<div id="final-titles">
+    <div class="center">
+        <!--<div class="title-val">OCTAVIA</div>-->
+        <span class="title-optional"> Direction and Technical Direction:</span>
+        <span class="title-optional">SUROGAAT / Giacomo Favaron, Paulina Stefanovic</span>
+        <br/>
+        <br/>
+        <span class="title-optional">Production, Art Direction, Editing and Sound:</span>
+        <span class="title-optional">SUROGAAT</span>
+        <br/>
+        <br/>
+        <span class="title-optional">WebGL coding:</span>
+        <span class="title-optional">Ruslan Dzhashymov</span>
+        <br/>
+        <br/>
+        <!--<span class="title-optional">Octavia:</span>
+        <span class="title-values">Yulia Kazakova</span>
+        <br/>
+        <br/>
+        <span class="title-optional">Doll:</span>
+        <span class="title-values">Magdalena Ancyperowicz.</span>
+        <br/>
+        <br/>-->
+        <span class="title-optional">Thanks to</span>
+        <span class="title-optional">2morrowmodels management</span>
+    </div>
+</div>
+
+<div id="xx">
+    <div id="menuLanding">
+        <div id="labelWrap">
+            <label id="firstScene">I</label>
+            <label id="secondScene">II</label>
+            <label id="thirdScene">III</label>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="content">
+    <video id="firstChapter">
+        <source src="data/chapter1/part1.mp4" type="video/mp4">
+    </video>
+    <!--<audio id="ostWav">-->
+    <!--<source src="data/OSTChapter1.wav" type="audio/wav">-->
+    <!--</audio>-->
+
+    <audio id="firstWav">
+        <source src="data/chapter1/voice1fix.wav" type="audio/wav">
+    </audio>
+
+    <audio id="transition1to2">
+        <source src="data/transition1to2.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <audio id="secondWav">
+        <source src="data/chapter1/voice2fixlast.wav" type="audio/wav">
+    </audio>
+
+    <audio id="closedEye">
+        <source src="data/chapter2/closed_eye.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="openEye">
+        <source src="data/chapter2/open_eye.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="voiceUp">
+        <source src="data/chapter2/voice_1.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="voiceDown">
+        <source src="data/chapter2/voice_2.mp3" type="audio/mpeg">
+    </audio>
+
+
+
+    <audio id="transition2to3">
+        <source src="data/transition2to3.mp3" type="audio/mpeg">
+    </audio>
+
+    <video id="thirdChapter">
+        <source src="data/chapter2/part3.mp4" type="video/mp4">
+    </video>
+
+    <!--<audio id="thirdChapterSound">-->
+    <!--<source src="data/chapter2/OSTChapter3-1.wav" type="audio/wav">-->
+    <!--</audio>-->
+
+</div>
+
+<div id="render">
+    <iframe id="iframe" src="test/octavia" frameborder="0"></iframe>
+</div>
+
+<div id="eye"></div>
+
+<canvas id="thecanvas"></canvas>
+
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="bundle/bundle.js"></script>
+</body>
+
+</html>

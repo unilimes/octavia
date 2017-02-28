@@ -1,0 +1,13 @@
+<section class="home-section">
+    <div data-ng-hide="iframeSrc" id="textBox">
+        <div id="title">OCTAVIA</div>
+        <div class="slogan">INTERACTIVE EXPLORATIVE FILM</div>
+        <div id="enter"><a href="#" ng-click="setIframeSrc()">ENTER</a></div>
+        <div class="slogan">AND EXPLORE</div>
+        <div class="home-sound"><img src="assets/img/home-sound.png" alt=""></div>
+    </div>
+    <div class="HOME-CROME">
+        This interactive film requires CHROME
+    </div>
+    <iframe ng-if="iframeSrc" src="{{iframeSrc}}" ng-src="{{iframeSrc}}" frameborder="0" class="full-view" ></iframe>
+</section>
