@@ -3,7 +3,6 @@ var dataVolume;
 
 window.addEventListener("message", function (event) {
     var curAction = event.data;
-
     dataVolume = curAction.draw;
     if (!(App.noAnimate = !dataVolume))App.Animate();
 
@@ -12,6 +11,19 @@ window.addEventListener("message", function (event) {
         App.exitStart = true;
         jQuery('#dark-screen').css('display', 'block').fadeOut(3000);
         App.isTHreeTimesNeedClicked = false;
+
+        setTimeout(function () {
+            startStep = 1;
+            presentZoom = App.Zoom.current;
+            App.Animations.add(App.zoomIn);
+        }, 15000);
+
+        setTimeout(function () {
+            startStep = 1;
+            presentZoom = App.Zoom.current;
+            App.Animations.add(App.zoomOut);
+        }, 45000);
+
         setTimeout(function () {
             //jQuery('#dark-screen').fadeIn(3000);
             App.tHreeTimesNeedClickedInterval = 200;
@@ -73,8 +85,8 @@ var App = App || {
         frame: 0,
         frameDir: 1,
         Zoom: {
-            min: .45,
-            max: 0.95,
+            min: .4,
+            max: 0.75,
             // step: .0025, //disable mouse zoom
             current: 0.4 //0.95
         }
@@ -348,8 +360,8 @@ var direction = true;
 var zoomInFlag = true;
 var zoomOutFlag = true;
 var startStep = 1;
-var finishStep = 300;
-var speedZoom = 0.5;
+var finishStep = 600;
+var speedZoom = 1;
 var presentZoom;
 
 App.zoomIn = function () {
@@ -357,7 +369,7 @@ App.zoomIn = function () {
         App.Zoom.current = presentZoom + speedZoom * (Math.sin(Math.PI / 2 * (startStep / finishStep)));
         startStep++;
     }
-    if (App.Zoom.current > 0.94) {
+    if (App.Zoom.current >= App.Zoom.max) {
         App.Animations.drop(App.zoomIn);
     }
 };
@@ -365,10 +377,11 @@ App.zoomIn = function () {
 
 App.zoomOut = function () {
     if (App.Zoom.current > App.Zoom.min) {
-        App.Zoom.current = presentZoom - 0.5 * ( Math.sin(Math.PI / 2 * (startStep / finishStep)));
+        App.Zoom.current = presentZoom - speedZoom * ( Math.sin(Math.PI / 2 * (startStep / finishStep)));
         startStep++;
     }
-    if (App.Zoom.current < 0.46) {
+
+    if (App.Zoom.current <= App.Zoom.min) {
         App.Animations.drop(App.zoomOut);
     }
 };
@@ -868,7 +881,7 @@ Extra.Repeat(20, function (a) {
             b = 0 < b ? b : -b,
             c = .4 + .6 * b,
             d = .4 + .6 * b,
-            e = .1 + .9 * b,
+            e = .1 + .6 * b,
             b = .7 + .3 * b;
         // App.ambientLight.color = new THREE.Color(c, c, c);
 
@@ -887,7 +900,7 @@ Extra.Repeat(20, function (a) {
                 b = 0 < b ? b : -b,
                 c = .4 + .6 * b,
                 d = .4 + .6 * b,
-                e = .1 + .9 * b,
+                e = .1 + .6 * b,
                 b = .7 + .3 * b;
             // App.ambientLight.color = new THREE.Color(c, c, c);
 
@@ -909,7 +922,7 @@ Extra.Repeat(20, function (a) {
                 b = 0 < b ? b : -b,
                 c = .4 + .6 * b,
                 d = .4 + .6 * b,
-                e = .1 + .9 * b,
+                e = .1 + .6 * b,
                 b = .7 + .3 * b;
             // App.ambientLight.color = new THREE.Color(c, c, c);
 
@@ -1150,7 +1163,7 @@ Extra.Repeat(20, function (a) {
     App.AmbientSound = new Howl({
         urls: ["sound/ost_chapter_2_sphere_loop.mp3"],
         loop: !0,
-        volume: .7
+        volume: 0.5
     });
     THREE.DefaultLoadingManager.onProgress = function (a, b, c) {
     };

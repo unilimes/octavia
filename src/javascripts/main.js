@@ -190,6 +190,7 @@ function start() {
             onLeaveAreas.list[1].volume = result.firstWav; //firstWav
             if (onLeaveAreas.list[2]) onLeaveAreas.list[2].volume = 1.0;
         }
+
     }
 
     // draw the frame before eye closed for scene 3
@@ -267,7 +268,6 @@ function start() {
 
     function onLeaveAreas() {
         var leavListSounds = onLeaveAreas.list || [];
-
         //for (var i = 0; i < leavListSounds.length; i++) {
         //    leavListSounds[i].volume = 0.0;
         //}
