@@ -10,6 +10,7 @@
     <title>Octavia</title>
 
 
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="assets/js/pace.min.js"></script>
 
 
@@ -20,31 +21,44 @@
 <div id="play-r">
     <img class="center" src="assets/img/play.png">
 </div>
-<div id="textLanding">
-    <div class="afterload-wrap">
-        <img src="assets/img/ICONS2.png">
-        <div class="icons-text">
-            <div>
-                <span>MOVE THE MOUSE AROUND TO HEAR</span>
+<div id="textLanding" class="help-nav">
+    <div class="help-wrap">
+        <div class="row">
+            <div class="help-item col-md-offset-1 col-sm-offset-1 col-md-2 col-sm-2 col-xs-12">
+                <img src="assets/img/help/move.png" alt="">
+                <div class="help-text">
+                    <span>MOVE THE MOUSE AROUND TO HEAR</span>
+                </div>
             </div>
-            <div>
-                <span>LIKE AN EYE BLINK, MOVE THE MOUSE UP AND DOWN</span>
+            <div class="help-item col-md-2 col-sm-2 col-xs-12">
+                <img src="assets/img/help/blink.png" alt="">
+                <div class="help-text">
+                    <span>LIKE AN EYE BLINK, MOVE THE MOUSE UP AND DOWN</span>
+                </div>
             </div>
-            <div>
-                <span class="middle-icon">TURN AUDIO ON !</span>
+            <div class="help-item middle-item col-md-2 col-sm-2 col-xs-12">
+                <img src="assets/img/help/audio.png" alt="">
+                <div class="help-text">
+                    <span class="middle-icon">TURN AUDIO ON !</span>
+                </div>
             </div>
-            <div>
-                <span>CLICK ON THE FILM</span>
-                <span>BUT DOUBLE CLICK ON THE SPHERE !</span>
+            <div class="help-item col-md-2 col-sm-2 col-xs-12">
+                <img src="assets/img/help/click.png" alt="">
+                <div class="help-text">
+                    <span>CLICK ON THE FILM</span>
+                    <span>BUT DOUBLE CLICK ON THE SPHERE !</span>
+                </div>
             </div>
-            <div>
-                <span>DRAG TO ROTATE</span>
-                <span>THE SPHERE</span>
+            <div class="help-item col-md-2 col-sm-2 col-xs-12">
+                <img src="assets/img/help/drag.png" alt="">
+                <div class="help-text">
+                    <span>DRAG TO ROTATE</span>
+                    <span>THE SPHERE</span>
+                </div>
             </div>
         </div>
         <span id="start-btn">BEGIN</span>
     </div>
-
 </div>
 
 <div id="final-titles">
@@ -89,23 +103,22 @@
 
 <div id="content">
     <video id="firstChapter">
-        <source src="data/chapter1/part1.mp4" type="video/mp4">
+        <source src="data/chapter1/part1rose.mp4" type="video/mp4">
     </video>
-    <!--<audio id="ostWav">-->
-    <!--<source src="data/OSTChapter1.wav" type="audio/wav">-->
-    <!--</audio>-->
+    <audio id="ostWav">
+        <source src="data/ostpart1.wav" type="audio/wav">
+    </audio>
 
     <audio id="firstWav">
-        <source src="data/chapter1/voice1fix.wav" type="audio/wav">
+        <source src="data/chapter1/sound1.wav" type="audio/wav">
+    </audio>
+
+    <audio id="secondWav">
+        <source src="data/chapter1/sound2.wav" type="audio/wav">
     </audio>
 
     <audio id="transition1to2">
         <source src="data/transition1to2.mp3" type="audio/mpeg">
-    </audio>
-
-
-    <audio id="secondWav">
-        <source src="data/chapter1/voice2fixlast.wav" type="audio/wav">
     </audio>
 
     <audio id="closedEye">
@@ -130,7 +143,7 @@
     </audio>
 
     <video id="thirdChapter">
-        <source src="data/chapter2/part3.mp4" type="video/mp4">
+        <source src="data/chapter2/part3rose.mp4" type="video/mp4">
     </video>
 
     <!--<audio id="thirdChapterSound">-->

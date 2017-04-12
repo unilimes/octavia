@@ -9,12 +9,26 @@ window.addEventListener("message", function (event) {
 
     if (dataVolume) {
         App.startApp();
+        App.exitStart = true;
         jQuery('#dark-screen').css('display', 'block').fadeOut(3000);
         App.isTHreeTimesNeedClicked = false;
         setTimeout(function () {
             //jQuery('#dark-screen').fadeIn(3000);
             App.tHreeTimesNeedClickedInterval = 200;
         }, 40 * 1000);
+        App.tempTimeOut1 = setTimeout(function () {
+            if(App.exitStart == false){
+                clearTimeout(App.tempTimeOut2);
+            }
+            App.dbClickStart = 0;
+            App.tHreeTimesNeedClickedInterval = 0;
+            jQuery('#dark-screen').fadeIn(3000);
+            parent.postMessage("GO_TO_THREE_CHAPTER", "/");
+            setTimeout(function(){
+                window.isEffectAreLoading =   false;
+                App.aupdateChildEffects();
+            },4*1000)
+        }, 60 * 1000);
         brightnessVal = 0;
         App.Animations.drop(App.outro);
         //App.Animations.add(App.intro);
@@ -62,7 +76,7 @@ var App = App || {
             min: .45,
             max: 0.95,
             // step: .0025, //disable mouse zoom
-            current: 0.95
+            current: 0.4 //0.95
         }
     };
 App.Scoop = {
@@ -441,7 +455,6 @@ function changeLight(event) {
     App.scene.remove(App.ambLight);
     App.scene.remove(App.ambLight2);
     window.removeEventListener('mousemove', dragSound, true);
-
     //autoZoom({deltaY: 1, isFinish: 1});
     //App.mouseDownZoom = !1;
     //App.aupdateChildEffects();
@@ -526,19 +539,36 @@ function DBClick(ev) {
 
         App.AmbientSound[isStartAn ? 'play' : 'pause']();
     }, App.tHreeTimesNeedClickedInterval | 0);
+
+    if(App.exitStart == true){
+        App.exitStart = false;
+        App.tempTimeOut2 = setTimeout(function () {
+            clearTimeout(App.tempTimeOut1);
+            App.dbClickStart = 0;
+            App.tHreeTimesNeedClickedInterval = 0;
+            jQuery('#dark-screen').fadeIn(3000);
+            parent.postMessage("GO_TO_THREE_CHAPTER", "/");
+            setTimeout(function(){
+                window.isEffectAreLoading =   false;
+                App.aupdateChildEffects();
+            },4*1000)
+        }, 40 * 1000);
+    }
+
 }
 window.addEventListener('mousedown', function () {
 
-    if (App.tHreeTimesNeedClickedInterval > 0 && Date.now() - App.dbClickStart < 150) {//
-        App.dbClickStart = 0;
-        App.tHreeTimesNeedClickedInterval = 0;
-        jQuery('#dark-screen').fadeIn(3000);
-        parent.postMessage("GO_TO_THREE_CHAPTER", "/");
-        setTimeout(function(){
-            window.isEffectAreLoading =   false;
-            App.aupdateChildEffects();
-        },4*1000)
-    }
+    // if (App.tHreeTimesNeedClickedInterval > 0 && Date.now() - App.dbClickStart < 150) {//
+    //     clearTimeout(App.tempTimeOut1);
+    //     App.dbClickStart = 0;
+    //     App.tHreeTimesNeedClickedInterval = 0;
+    //     jQuery('#dark-screen').fadeIn(3000);
+    //     parent.postMessage("GO_TO_THREE_CHAPTER", "/");
+    //     setTimeout(function(){
+    //         window.isEffectAreLoading =   false;
+    //         App.aupdateChildEffects();
+    //     },4*1000)
+    // }
 
     mouseY = event.clientY || event.pageY;
     mouseX = event.clientX || event.pageX;
@@ -570,7 +600,7 @@ window.addEventListener('mousedown', function () {
 }, true);
 
 window.addEventListener('mouseup', changeLight, true);
-window.addEventListener('mousewheel', autoZoom, true);
+// window.addEventListener('mousewheel', autoZoom, true);
 
 App.run("THREEJS");
 var pathPref = "img/c1/tempnew/", // img/c1/new/
@@ -1074,7 +1104,7 @@ Extra.Repeat(20, function (a) {
             angles += 0.0005;
 
             if (App.mouse.y < 0.01 && App.mouse.y > -0.01) {
-                posYRot = true;
+                // posYRot = true; // enable mousemove zoom
             }
 
             if (posYRot == true) {

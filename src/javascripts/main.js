@@ -3,9 +3,10 @@ Pace.on("done", function () {
     //    onFinish();
     //}
     onFinish.done = true;
-    $( "#start-btn" ).click(onFinish);
-});
 
+    $( "#start-btn" ).fadeIn( "slow");
+});
+$( "#start-btn" ).click(onFinish);
 var video = document.querySelector('#firstChapter');
 video.addEventListener('progress', function (e) {
     if (e.total && e.loaded) {
@@ -25,6 +26,7 @@ video.addEventListener('progress', function (e) {
 
 function onFinish() {
     if (!onFinish.iter)onFinish.iter = 1;
+
     if (++onFinish.iter > 2 && onFinish.done && !onFinish.start) {
         onFinish.start = !0;
         start();
@@ -34,14 +36,13 @@ function onFinish() {
 
 
 function start() {
-
-    $("#textLanding").css("display", "none");
+    $("#start-btn").css("display", "none");
     $("#menuLanding").css("display", "flex");
 
     var mediaData = {
         list: [
             //'ostWav',
-            'firstWav', 'secondWav', 'transition1to2', 'firstChapter', 'transition2to3',
+            'firstWav', 'secondWav', 'transition1to2', 'firstChapter', 'transition2to3', 'ostWav',
             //'thirdChapterSound',
             'closedEye', 'openEye', 'voiceUp', 'voiceDown', 'thirdChapter']
     };
@@ -229,7 +230,7 @@ function start() {
             if (mediaData.openEye.paused) mediaData.openEye.play();
             mediaData.closedEye.volume = mouseY / window.innerHeight;
             mediaData.openEye.volume = 1 - mouseY / window.innerHeight;
-            console.log(mediaData.closedEye.volume, mediaData.openEye.volume, mediaData.closedEye.currentTime);
+            // console.log(mediaData.closedEye.volume, mediaData.openEye.volume, mediaData.closedEye.currentTime);
         }
         if (noInteraction && mouseY / window.innerHeight * 100 > 50 && eye.css("display") == "block") {
 
@@ -343,6 +344,7 @@ function start() {
                     onLeaveAreas.list = [mediaData.secondWav, mediaData.firstWav];
                     mediaData.firstWav.play();
                     mediaData.secondWav.play();
+                    mediaData.ostWav.play();
                     mediaData.firstChapter.play();
                     break;
                 }
@@ -369,13 +371,13 @@ function start() {
         };
         this.fillDark = function (callback, fillSt) {
             var fill = jQuery('#textLanding');
-            fill.find('.afterload-wrap').css('display', 'none');
 
             if (fillSt) {
                 fill['fadeOut']('slow');
             } else {
+                callback();
                 //fill.css('display', 'block');
-                fill['fadeIn']('slow', callback);
+                // fill['fadeOut']('slow', callback);
                 //setTimeout(callback,900);
             }
         };
@@ -561,6 +563,7 @@ function start() {
             {
                 mediaData.firstChapter.play();
                 mediaData.secondWav.play();
+                mediaData.ostWav.play();
                 mediaData.firstWav.play();
                 break;
             }
